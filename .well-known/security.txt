@@ -1,3 +1,0 @@
-Contact: mailto:AegisEP@proton.me
-Policy: https://aegisendpoint.org/privacy.html
-Preferred-Languages: en
