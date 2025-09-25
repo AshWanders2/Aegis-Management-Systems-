@@ -1,11 +1,151 @@
-:root{--bg:#0b0d11;--panel:#11141a;--ink:#e7ecf3;--muted:#aab4c3;--action:#61dafb;--accent:#7ef0c3;--ring:rgba(126,240,195,.25)}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-a{color:var(--action);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{width:min(1100px,92vw);margin:0 auto;padding:0 0 2rem}
-.site-header{position:sticky;top:0;background:rgba(11,13,17,.8);backdrop-filter:blur(6px);border-bottom:1px solid #1b2029;z-index:10}
-.site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
-.brand{margin:0;font-weight:800;letter-spacing:.02em}
-nav a{margin-left:1rem;color:var(--muted)}nav a:hover{color:var(--ink)}
-.hero{padding:3rem 0 1rem}.hero h2{margin:0 0 .5rem;font-size:clamp(1.8rem,4vw,2.4rem)}.subtitle{color:var(--muted);max-width:70ch}
-.card{background:var(--panel);border:1px solid #1b2029;margin:1rem 0;padding:1rem 1.1rem;border-radius:12px}
-.site-footer{border-top:1px solid #1b2029}.site-footer .wrap{padding:1rem 0;color:var(--muted);font-size:.95rem}
+/* ====== AEIS Styles (for the HTML you pasted) ====== */
+
+/* Color system */
+:root{
+  --bg: #0b0f14;
+  --panel: #111823;
+  --ink: #eaf2ff;
+  --muted: #a9b7cc;
+  --line: #1e2a3a;
+  --brand-1: #4ae6ff;   /* cyan */
+  --brand-2: #9b6cff;   /* violet */
+  --focus: rgba(74,230,255,.35);
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand-1);text-decoration:none}
+a:hover{text-decoration:underline}
+img,svg{max-width:100%;height:auto}
+
+/* Accessibility helpers */
+.skip-link{
+  position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
+}
+.skip-link:focus{
+  position:fixed;left:12px;top:12px;width:auto;height:auto;z-index:9999;
+  background:#000;border:2px solid var(--brand-1);color:#fff;padding:.5rem .75rem;border-radius:.5rem;
+}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* Layout wrapper */
+.wrap{width:min(1100px,92vw);margin:0 auto}
+
+/* Header / Topbar */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(9,14,20,.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;color:#fff;font-weight:700;letter-spacing:.02em}
+.brand .logo{display:block}
+
+/* Nav */
+.site-nav{display:flex;align-items:center;gap:1rem}
+.nav-toggle{
+  display:none;
+  background:linear-gradient(90deg,var(--brand-1),var(--brand-2));
+  color:#061018;border:0;border-radius:.5rem;padding:.5rem .7rem;font-weight:700
+}
+.menu{display:flex;list-style:none;margin:0;padding:0;gap:1rem}
+.menu a{
+  display:inline-block;padding:.35rem .5rem;color:var(--muted);border-radius:.4rem
+}
+.menu a[aria-current="page"]{color:#fff;background:rgba(255,255,255,.06)}
+.menu a:hover{color:#fff}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:2.2rem 0}
+.hero-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:1.25rem 1.25rem 1.1rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.25)
+}
+.hero h1{margin:.2rem 0 .2rem;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15}
+.subtitle{color:var(--muted);margin:.2rem 0 1rem}
+
+/* CTA row */
+.cta-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.btn{
+  display:inline-block;border:0;border-radius:.6rem;padding:.6rem .9rem;font-weight:800;
+  color:#071018;background:linear-gradient(90deg,var(--brand-1),var(--brand-2));
+}
+.btn:hover{text-decoration:none;filter:saturate(1.1)}
+.btn-ghost{
+  display:inline-block;border:1px solid var(--line);color:#e6efff;background:transparent;
+  border-radius:.6rem;padding:.55rem .85rem
+}
+.badge{
+  display:inline-block;border:1px dashed var(--line);color:var(--muted);
+  padding:.45rem .6rem;border-radius:.6rem;font-size:.9rem
+}
+
+/* Hero emblem */
+.hero-side{display:block}
+.shield-wrap{position:relative;display:grid;place-items:center}
+.glow{
+  position:absolute;width:72%;height:72%;border-radius:50%;
+  background:radial-gradient(55% 55% at 50% 50%,rgba(77,231,255,.18),rgba(155,108,255,.08) 60%,transparent 70%);
+  filter:blur(12px)
+}
+.shield-svg{position:relative}
+
+/* Grid of pillars */
+.grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0 1.5rem
+}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:1rem;min-height:140px
+}
+.card h2{margin:.2rem 0 .4rem;font-size:1.2rem}
+.card p{margin:0;color:var(--muted)}
+
+/* Built-backwards strip */
+.built-backwards{
+  margin:1rem 0 2.2rem;padding:1rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01))
+}
+.built-backwards h4{margin:.1rem 0 .4rem;font-size:1.05rem;color:#d7e6ff}
+.small{font-size:.95rem}
+.muted{color:var(--muted)}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--line);padding:1rem 0 1.4rem}
+.site-footer p{margin:.2rem 0}
+
+/* Responsive nav + layout */
+@media (max-width: 880px){
+  .hero{grid-template-columns:1fr;gap:1rem}
+  .hero-side{order:-1} /* emblem above on mobile */
+}
+@media (max-width: 720px){
+  .nav-toggle{display:inline-block}
+  .menu{
+    position:fixed;top:60px;right:12px;left:12px;display:block;
+    background:rgba(10,14,20,.98);border:1px solid var(--line);border-radius:12px;
+    padding:.5rem;max-height:0;overflow:hidden;transition:max-height .25s ease
+  }
+  .menu li{margin:.25rem 0}
+  .menu a{display:block;padding:.6rem .7rem}
+  /* toggled open via JS sets data-open */
+  .menu[data-open="true"]{max-height:300px}
+  .grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 520px){
+  .grid{grid-template-columns:1fr}
+  .hero-card{padding:1rem}
+}
+
+/* Motion-respect */
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto;transition:none}
+}
+
+/* Gentle zoom for the body class you set */
+.calm-zoom{transform:translateZ(0)}
