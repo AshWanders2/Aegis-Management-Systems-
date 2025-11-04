@@ -2,7 +2,7 @@
 # This file provides official contact information for security issues
 # according to RFC 9116
 
-Contact: mailto:contact@AegisEP@proton.me
-Policy: https://aegisendpoint.org/privacy.html
+Contact: mailto:contact@AegisEP.proton.me
+Policy: https://aeis.pages.dev/privacy.html
 Preferred-Languages: en
 Expires: 2025-12-31T23:59:59.000Z
